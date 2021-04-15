@@ -1,0 +1,16 @@
+name: notification after issue creation
+on:
+  issues:
+    types: [created]    
+
+jobs:
+ sendIssues:
+  runs-on: ubuntu-latest
+  steps:
+
+  - name: get issues
+    id: rel_issues
+    env:
+      ISSUE_CONTEXT: ${{ toJson(github.event.issue) }}
+    run: |
+      echo $ISSUE_CONTEXT 
