@@ -17,12 +17,12 @@ jobs:
     run: |
       echo $ISSUE_CONTEXT
 
-  - name: Get title
+  - name: Get discussion info
     id: title
     env:
       ISSUE_CONTEXT: ${{ toJson(github.event.discussion) }}
     run: |
-      echo $ISSUE_CONTEXT > temp_title.txt
-      sed -nr 's/.*"title": (.*), "updated.*/\1/p' <temp_title.txt >title.txt
-      echo "::set-output name=title::$(cat title.txt)"
-      echo "${{ github.event.discussion.title }}"
+      echo "::set-output name=title::${{ github.event.discussion.title }}"
+      echo "::set-output name=description::${{ github.event.discussion.description }}"
+      echo "::set-output name=date::$(${{ github.event.discussion.updated_at }} +'%Y%m')"
+      echo "::set-output name=date_spelled::$(${{ github.event.discussion.updated_at }} +'%B %Y')"
