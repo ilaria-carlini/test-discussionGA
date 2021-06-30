@@ -3,7 +3,7 @@ name: auto-upload announcements to website
 on:
   discussion: 
     category:
-      - General
+      slug: "general"
     types: [created]    
 
 jobs:
