@@ -1,9 +1,7 @@
 name: auto-upload announcements to website
 
 on:
-  discussion: 
-    category:
-      slug: [general]
+  discussion:
     types: [created]    
 
 jobs:
@@ -12,6 +10,7 @@ jobs:
   steps:
 
   - name: get release/announcement
+    if: ${{ github.event.discussion.category.slug }} == "general"
     id: rel_annou
     env:
       ISSUE_CONTEXT: ${{ toJson(github.event.discussion) }}
