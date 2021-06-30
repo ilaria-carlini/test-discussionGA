@@ -25,4 +25,4 @@ jobs:
       echo $ISSUE_CONTEXT > temp_title.txt
       sed -nr 's/.*"title": (.*), "updated.*/\1/p' <temp_title.txt >title.txt
       echo "::set-output name=title::$(cat title.txt)"
-      echo "$(cat title.txt)"
+      echo "${{ github.event.discussion.title }}"
