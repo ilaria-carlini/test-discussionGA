@@ -26,3 +26,4 @@ jobs:
       echo "::set-output name=description::${{ github.event.discussion.body }}"
       echo "::set-output name=date::$(date +'%Y%m')"
       echo "::set-output name=date_spelled::$(date +'%B %Y')"
+      echo "${{ steps.title.outputs.date }}"
