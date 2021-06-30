@@ -23,6 +23,6 @@ jobs:
       ISSUE_CONTEXT: ${{ toJson(github.event.discussion) }}
     run: |
       echo "::set-output name=title::${{ github.event.discussion.title }}"
-      echo "::set-output name=description::${{ github.event.discussion.description }}"
+      echo "::set-output name=description::${{ github.event.discussion.body }}"
       echo "::set-output name=date::$(${{ github.event.discussion.updated_at }} +'%Y%m')"
       echo "::set-output name=date_spelled::$(${{ github.event.discussion.updated_at }} +'%B %Y')"
