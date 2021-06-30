@@ -10,7 +10,7 @@ jobs:
   steps:
 
   - name: get release/announcement
-    if: github.event.discussion.category.slug == "general"
+    if: github.event.discussion.category.slug == 'general'
     id: rel_annou
     env:
       ISSUE_CONTEXT: ${{ toJson(github.event.discussion) }}
