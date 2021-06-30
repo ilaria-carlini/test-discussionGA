@@ -1,7 +1,7 @@
 name: auto-upload announcements to website
 
 on:
-  discussions: 
+  discussion: 
     types: [created]    
 
 jobs:
