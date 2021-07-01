@@ -17,15 +17,9 @@ jobs:
       body="${{ github.event.discussion.body }}"
       
       echo "::set-output name=title::${title}"
-      echo "::set-output name=summary::${body:0:500}"
+      echo "::set-output name=category::${category}"
       echo "::set-output name=description::${body}"
-      
-      if [[ "${category}" == "Releases" ]]
-      then
-        echo "::set-output name=is_release::true"
-      else
-        echo "::set-output name=is_release::false"
-      fi      
+        
   - name: Fetch current date
     id: date
     run: |
@@ -37,4 +31,4 @@ jobs:
       token: ${{ secrets.TEST_GA_TOKEN }}
       repository: ilaria-carlini/test-dispatch
       event-type: announcement_launched
-      client-payload: '{"description": "${{ steps.announcement.outputs.description }}", "id": "${{ steps.date.outputs.date }}", "title": "${{ steps.announcement.outputs.title }}", "date": "${{ steps.date.outputs.date_spelled }}", "summary": "${{ steps.announcement.outputs.summary }}", "image": "???", "type" : "announcement_launched", "release": "${{ steps.announcement.outputs.is_release }}"}'
+      client-payload: '{"description": "${{ steps.announcement.outputs.description }}", "category": "${{ steps.announcement.outputs.category }}", "id": "${{ steps.date.outputs.date }}", "title": "${{ steps.announcement.outputs.title }}", "date": "${{ steps.date.outputs.date_spelled }}", "image": "???", "type" : "announcement_launched" }'
