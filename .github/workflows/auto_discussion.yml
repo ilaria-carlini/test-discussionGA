@@ -29,6 +29,7 @@ jobs:
   - name: Repository Dispatch
     uses: peter-evans/repository-dispatch@v1
     with:
+      token: ${{ secrets.TEST_GA_TOKEN }}
       repository: ilaria-carlini/test-dispatch
       event-type: announcement_launched
       client-payload: '{"id": "${{ steps.info.outputs.date }}", "title": ${{ steps.info.outputs.title }}, "date": "${{ steps.info.outputs.date_spelled }}", "summary": "${{ steps.info.outputs.summary }}", "image": "???", "type" : "announcement_launched" }'
