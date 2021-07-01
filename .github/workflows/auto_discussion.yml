@@ -32,6 +32,6 @@ jobs:
     uses: peter-evans/repository-dispatch@v1.1.3
     with:
       token: ${{ secrets.TEST_GA_TOKEN }}
-      repository: icub-tech-iit/code
+      repository: ilaria-carlini/test-dispatch
       event-type: announcement_launched
       client-payload: '{"description": "${{ steps.announcement.outputs.description }}", "category": "${{ steps.announcement.outputs.category }}", "id": "${{ steps.date.outputs.date }}", "title": "${{ steps.announcement.outputs.title }}", "date": "${{ steps.date.outputs.date_spelled }}", "image": "???", "type" : "announcement_launched" }'
