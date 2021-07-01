@@ -2,9 +2,6 @@ name: Auto-upload Distro announcements to Bazaar
 
 on:
   discussion:
-    category:
-      name: 
-      - General
     types: [pinned]    
 
 jobs:
