@@ -18,7 +18,7 @@ jobs:
       category="${{ github.event.discussion.category.name }}"
       title="${{ github.event.discussion.title }}"
       body="${{ github.event.discussion.body }}"
-      
+      echo "${{ github.event }}"
       echo "::set-output name=title::${title}"
       echo "::set-output name=category::${category}"
       echo "::set-output name=description::${body}"
