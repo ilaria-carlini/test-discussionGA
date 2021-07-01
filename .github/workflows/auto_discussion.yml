@@ -18,7 +18,7 @@ jobs:
       echo $ISSUE_CONTEXT
 
   - name: Get discussion info
-    id: title
+    id: info
     env:
       ISSUE_CONTEXT: ${{ toJson(github.event.discussion) }}
     run: |
@@ -26,4 +26,10 @@ jobs:
       echo "::set-output name=description::${{ github.event.discussion.body }}"
       echo "::set-output name=date::$(date +'%Y%m')"
       echo "::set-output name=date_spelled::$(date +'%B %Y')"
-      echo "${{ steps.title.outputs.date }}"
+  - name: Repository Dispatch
+    uses: peter-evans/repository-dispatch@v1
+    with:
+      repository: ilaria-carlini/test-dispatch
+      event-type: announcement_launched
+      client-payload: '{"id": "${{ steps.info.outputs.date }}", "title": ${{ steps.info.outputs.title }}, "date": "${{ steps.info.outputs.date_spelled }}", "summary": "${{ steps.info.outputs.summary }}", "image": "???", "type" : "announcement_launched" }'
+
